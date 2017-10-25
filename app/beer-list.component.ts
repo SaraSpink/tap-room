@@ -5,7 +5,7 @@ import { Beer } from './beer.model'
   selector: 'beer-list',
   template: `
   <ol>
-    <li [class]= "tapBeer(beer)" (click)="isTapped(beer)" *ngFor='let beer of beers'>{{beer.name}} {{beer.brand}} {{beer.price}} {{beer.abv}}</li>
+    <li (click)="isTapped(beer)" *ngFor='let beer of childBeerList'>{{beer.name}} {{beer.brand}} {{beer.price}} {{beer.abv}} {{beer.pints}}<button (click)="editButtonHasBeenClicked(beer)">Edit Beer</button></li>
   </ol>
 
   `

@@ -12,19 +12,17 @@ import { Beer } from './beer.model'
     <beer-list [childBeerList]="masterBeerList" (clickSender)="editBeer($event)"></beer-list>
   </div>
   <hr>
-  <edit-beer [childSelectedBeer]= "selectedBeer" (tapButtonClickedSender)="kegEditing()"></edit-beer>
+  <edit-beer [childSelectedBeer]= "selectedBeer" (tapButtonClickedSender)="finishedEditing()"></edit-beer>
   <new-beer (newBeerSender)= "addBeer($event)"></new-beer>
 </div>
  `
 
 })
 
-
-
 export class AppComponent {
   currentFocus: string = 'TAP THAT 5000'
   selectedBeer = null;
-  
+
   masterBeerList: Beer[] = [
     new Beer('Red Ale', 'Hair of the Dog', 5, 6.5),
     new Beer('Brown Ale', 'Mac and Jack\'s', 4, 7.5),
