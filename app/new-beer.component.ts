@@ -7,23 +7,30 @@ import { Beer } from './beer.model';
   <div class="jumbotron">
     <h1>Enter A Beer!</h1>
   </div>
+
   <div class="well">
-    <label>Enter Beer Style</label>
-    <input #newBeerName>
-    <label>Enter Brand</label>
-    <input #newBeerBrand>
-    <label>Enter Price</label>
-    <input #newBeerPrice>
-    <label>Enter ABV</label>
-    <input #newBeerAbv>
-    <button (click)="submitForm(newBeerName.value, newBeerBrand.value, newBeerPrice.value, newBeerAbv.value); newBeerName.value=''; newBeerBrand.value=''; newBeerPrice.value = null; newBeerAbv.value= null;" >Add Beer</button>
+    <table class="table">
+      <thead>
+        <th>Enter Brand</th>
+        <th>Enter Beer Style</th>
+        <th>Enter Price</th>
+        <th>Enter ABV</th>
+      </thead>
+      <tbody>
+        <td><input #newBeerBrand></td>
+        <td><input #newBeerName></td>
+        <td><input #newBeerPrice></td>
+        <td><input #newBeerAbv></td>
+      </tbody>
+      <button (click)="submitForm(newBeerName.value, newBeerBrand.value, newBeerPrice.value, newBeerAbv.value); newBeerName.value=''; newBeerBrand.value=''; newBeerPrice.value = null; newBeerAbv.value= null;" class="btn btn-info">Add Beer</button>
+    </table>
   </div>
   `
 })
 
 export class NewBeerComponent{
   @Output() newBeerSender = new EventEmitter();
-  submitForm(name: string, brand: string, price: number, abv: string){
+  submitForm(name: string, brand: string, price: number, abv: number){
     let newBeerToAdd: Beer = new Beer(name,brand,price,abv);
     this.newBeerSender.emit(newBeerToAdd);
   }

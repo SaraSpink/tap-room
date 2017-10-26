@@ -6,19 +6,22 @@ import { Beer } from './beer.model';
   template: `
   <div>
     <div *ngIf="childSelectedBeer">
-      <h3>{{childSelectedBeer.brand}} {{childSelectedBeer.name}}</h3>
-
-      <h3>Edit Beer</h3>
-      <label>Enter Beer Style:</label>
-      <input [(ngModel)]="childSelectedBeer.name">
-      <label>Enter Brand:</label>
-      <input [(ngModel)]="childSelectedBeer.brand">
-      <label>Enter Price:</label>
-      <input [(ngModel)]="childSelectedBeer.price">
-      <label>Enter ABV:</label>
-      <input [(ngModel)]="childSelectedBeer.abv">
-
-      <button (click)="tapButtonClicked()">Done editing!</button>
+      <h3>Edit {{childSelectedBeer.brand}} {{childSelectedBeer.name}}</h3>
+      <table class="table">
+        <thead>
+          <th>Enter Beer Style</th>
+          <th>Enter Brand</th>
+          <th>Enter Price</th>
+          <th>Enter ABV</th>
+        </thead>
+        <tbody>
+          <td><input [(ngModel)]="childSelectedBeer.name"></td>
+          <td><input [(ngModel)]="childSelectedBeer.brand"></td>
+          <td><input [(ngModel)]="childSelectedBeer.price"></td>
+          <td><input [(ngModel)]="childSelectedBeer.abv"><td>
+        </tbody>
+      </table>
+      <button class= "btn btn-info" (click)="tapButtonClicked()" >Done editing!</button>
     </div>
   </div>
   `
