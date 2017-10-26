@@ -8,13 +8,13 @@ import { Beer } from './beer.model';
     <h1>Enter A Beer!</h1>
   </div>
   <div class="well">
-    <label>Enter Beer Name</label>
+    <label>Enter Beer Style</label>
     <input #newBeerName>
-    <label>Enter Beer Brand</label>
+    <label>Enter Brand</label>
     <input #newBeerBrand>
-    <label>Enter Beer Price</label>
+    <label>Enter Price</label>
     <input #newBeerPrice>
-    <label>Enter Beer ABV</label>
+    <label>Enter ABV</label>
     <input #newBeerAbv>
     <button (click)="submitForm(newBeerName.value, newBeerBrand.value, newBeerPrice.value, newBeerAbv.value); newBeerName.value=''; newBeerBrand.value=''; newBeerPrice.value = null; newBeerAbv.value= null;" >Add Beer</button>
   </div>
@@ -23,7 +23,7 @@ import { Beer } from './beer.model';
 
 export class NewBeerComponent{
   @Output() newBeerSender = new EventEmitter();
-  submitForm(name: string, brand: string, price: number, abv: number){
+  submitForm(name: string, brand: string, price: number, abv: string){
     let newBeerToAdd: Beer = new Beer(name,brand,price,abv);
     this.newBeerSender.emit(newBeerToAdd);
   }

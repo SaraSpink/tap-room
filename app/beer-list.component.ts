@@ -8,14 +8,13 @@ import { Beer } from './beer.model'
   <table class="table">
     <thead>
       <tr>
-        <th>Beer Brand</th>
+        <th>Brand</th>
         <th>Beer Style</th>
-        <th>Beer Price</th>
-        <th>Beer ABV</th>
+        <th>Price</th>
+        <th>ABV</th>
         <th>Pints Remaining</th>
         <th></th>
         <th></th>
-
       </tr>
     </thead>
     <tbody>
@@ -23,7 +22,7 @@ import { Beer } from './beer.model'
       <td>{{beer.brand}}</td>
       <td>{{beer.name}}</td>
       <td>{{beer.price}}</td>
-      <td>{{beer.abv}}</td>
+      <td [class]="abvColor(beer)">{{beer.abv}}</td>
       <td>{{beer.pints}}</td>
       <td><button (click)="editButtonHasBeenClicked(beer)">Edit Beer</button></td>
       <td><button (click)="servePint(beer)">Serve Pint</button></td>
@@ -42,19 +41,9 @@ export class BeerListComponent {
     this.clickSender.emit(beerToEdit);
   }
 
-  // isTapped(clickedBeer: Beer) {
-  //   if(clickedBeer.tapped === true) {
-  //     alert("this keg is tapped!!");
-  //   } else {
-  //     alert("This keg is not tapped, get your DRANK on.");
-  //   }
-  //   debugger;
-  // }
-
 servePint(selectedBeer: Beer){
   selectedBeer.tapped = true;
   selectedBeer.pints -= 1;
-
 }
 
 lowKeg(beer) {
@@ -64,6 +53,13 @@ lowKeg(beer) {
     return "text-warning";
   }else if(beer.pints <= 10){
     return "text-danger";
+  }
+}
+
+abvColor(beer){
+  let beerNum = parseInt(beer.abv);
+  if(beerNum > 5){
+    return "bg-danger";
   }
 }
  //  priorityColor(currentTask){

@@ -24,9 +24,9 @@ export class AppComponent {
   selectedBeer = null;
 
   masterBeerList: Beer[] = [
-    new Beer('Red Ale', 'Hair of the Dog', 5, 6.5),
-    new Beer('Brown Ale', 'Mac and Jack\'s', 4, 7.5),
-    new Beer('Stout', 'Guiness', 7, 7.25)
+    new Beer('Red Ale', 'Hair of the Dog', 5, "6.5"),
+    new Beer('Brown Ale', 'Mac and Jack\'s', 4, "7.5"),
+    new Beer('Stout', 'Guiness', 7, "7.25")
   ];
 
   editBeer(clickedBeer){

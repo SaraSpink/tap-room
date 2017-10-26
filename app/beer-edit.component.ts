@@ -9,13 +9,13 @@ import { Beer } from './beer.model';
       <h3>{{childSelectedBeer.brand}} {{childSelectedBeer.name}}</h3>
 
       <h3>Edit Beer</h3>
-      <label>Enter Beer Name:</label>
+      <label>Enter Beer Style:</label>
       <input [(ngModel)]="childSelectedBeer.name">
-      <label>Enter Beer Brand:</label>
+      <label>Enter Brand:</label>
       <input [(ngModel)]="childSelectedBeer.brand">
-      <label>Enter Beer Price:</label>
+      <label>Enter Price:</label>
       <input [(ngModel)]="childSelectedBeer.price">
-      <label>Enter Beer ABV:</label>
+      <label>Enter ABV:</label>
       <input [(ngModel)]="childSelectedBeer.abv">
 
       <button (click)="tapButtonClicked()">Done editing!</button>
