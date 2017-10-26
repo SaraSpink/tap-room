@@ -5,11 +5,10 @@ import { FormsModule }  from '@angular/forms';
 import { BeerListComponent } from './beer-list.component';
 import { EditBeerComponent } from './beer-edit.component';
 import { NewBeerComponent } from './new-beer.component';
-import { PricePipe } from './price.pipe'
-
+import { PricePipe } from './price.pipe';
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule ],
+  imports: [ BrowserModule, FormsModule],
   declarations: [ AppComponent,
                 BeerListComponent,
                 EditBeerComponent,

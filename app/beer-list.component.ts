@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Beer } from './beer.model'
 
+
 @Component({
   selector: 'beer-list',
   template: `
@@ -28,7 +29,7 @@ import { Beer } from './beer.model'
     <tr [class]="lowKeg(beer)" *ngFor='let beer of childBeerList | price:filterByPrice'>
       <td>{{beer.brand}}</td>
       <td>{{beer.name}}</td>
-      <td>{{beer.price}}</td>
+      <td>$ {{beer.price}}</td>
       <td [class]="abvColor(beer)">{{beer.abv}}</td>
       <td>{{beer.pints}}</td>
       <td><button (click)="editButtonHasBeenClicked(beer)">Edit Beer</button></td>
@@ -72,18 +73,9 @@ lowKeg(beer) {
 }
 
 abvColor(beer){
-  let beerNum = parseInt(beer.abv);
-  if(beerNum >= 5){
+  if(beer.abv >= 5){
     return "bg-danger";
   }
 }
- //  priorityColor(currentTask){
- //   if (currentTask.priority === 3){
- //     return "bg-danger";
- //   } else if (currentTask.priority === 2) {
- //     return  "bg-warning";
- //   } else {
- //     return "bg-info";
- //   }
- // }
+
 }
