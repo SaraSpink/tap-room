@@ -16,16 +16,16 @@ import { Beer } from './beer.model';
     <input #newBeerPrice>
     <label>Enter Beer ABV</label>
     <input #newBeerAbv>
-    <button (click)="submitForm(newBeerName.value, newBeerBrand.value, newBeerPrice.value, newBeerAbv.value); newBeerName.value=''; newBeerBrand.value=''; newBeerPrice.value = null; newBeerAbv.value= null;">Add Beer</button>
+    <button (click)="submitForm(newBeerName.value, newBeerBrand.value, newBeerPrice.value, newBeerAbv.value); newBeerName.value=''; newBeerBrand.value=''; newBeerPrice.value = null; newBeerAbv.value= null;" >Add Beer</button>
   </div>
   `
 })
 
 export class NewBeerComponent{
   @Output() newBeerSender = new EventEmitter();
-
   submitForm(name: string, brand: string, price: number, abv: number){
     let newBeerToAdd: Beer = new Beer(name,brand,price,abv);
     this.newBeerSender.emit(newBeerToAdd);
   }
+
 }

@@ -11,7 +11,7 @@ import { Beer } from './beer.model'
     <h3>Available Kegs</h3>
     <beer-list [childBeerList]="masterBeerList" (clickSender)="editBeer($event)"></beer-list>
   </div>
-  <hr>
+
   <edit-beer [childSelectedBeer]= "selectedBeer" (tapButtonClickedSender)="finishedEditing()"></edit-beer>
   <new-beer (newBeerSender)= "addBeer($event)"></new-beer>
 </div>
