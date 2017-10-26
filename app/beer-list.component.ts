@@ -4,6 +4,12 @@ import { Beer } from './beer.model'
 @Component({
   selector: 'beer-list',
   template: `
+<label>Price Filter</label>
+<select (change)="onChange($event.target.value)">
+  <option value="allBeers"selected="selected">All Kegs</option>
+  <option value="underFive">Beers for $5 and under</option>
+  <option value="overFive">Over $5 per pint</option>
+</select>
 
   <table class="table">
     <thead>
@@ -18,7 +24,8 @@ import { Beer } from './beer.model'
       </tr>
     </thead>
     <tbody>
-    <tr [class]="lowKeg(beer)" *ngFor='let beer of childBeerList'>
+    <tr [class]="lowKeg(beer)" *ngFor='let beer of childBeerList | price:filterByPrice'>
+
       <td>{{beer.brand}}</td>
       <td>{{beer.name}}</td>
       <td>{{beer.price}}</td>
@@ -36,14 +43,19 @@ import { Beer } from './beer.model'
 export class BeerListComponent {
   @Input() childBeerList: Beer[];
   @Output() clickSender = new EventEmitter();
+  filterByPrice: string = "allBeers";
 
-  editButtonHasBeenClicked(beerToEdit, Beer) {
-    this.clickSender.emit(beerToEdit);
-  }
+editButtonHasBeenClicked(beerToEdit, Beer) {
+  this.clickSender.emit(beerToEdit);
+}
+
+onChange(optionFromMenu) {
+  this.filterByPrice = optionFromMenu;
+}
 
 servePint(selectedBeer: Beer){
-  selectedBeer.tapped = true;
-  selectedBeer.pints -= 1;
+selectedBeer.tapped = true;
+selectedBeer.pints -= 1;
 }
 
 lowKeg(beer) {
@@ -58,7 +70,7 @@ lowKeg(beer) {
 
 abvColor(beer){
   let beerNum = parseInt(beer.abv);
-  if(beerNum > 5){
+  if(beerNum >= 5){
     return "bg-danger";
   }
 }
