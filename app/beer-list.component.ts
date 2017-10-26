@@ -9,6 +9,7 @@ import { Beer } from './beer.model'
   <option value="allBeers"selected="selected">All Kegs</option>
   <option value="underFive">Beers for $5 and under</option>
   <option value="overFive">Over $5 per pint</option>
+  <option value="emptyKeg">Empty Kegs</option>
 </select>
 
   <table class="table">
@@ -25,7 +26,6 @@ import { Beer } from './beer.model'
     </thead>
     <tbody>
     <tr [class]="lowKeg(beer)" *ngFor='let beer of childBeerList | price:filterByPrice'>
-
       <td>{{beer.brand}}</td>
       <td>{{beer.name}}</td>
       <td>{{beer.price}}</td>
@@ -56,14 +56,17 @@ onChange(optionFromMenu) {
 servePint(selectedBeer: Beer){
 selectedBeer.tapped = true;
 selectedBeer.pints -= 1;
+  if (selectedBeer.pints <= 0){
+    selectedBeer.pints = 0;
+  }
 }
 
 lowKeg(beer) {
   if(beer.pints<=124 && beer.pints>50){
     return "text-primary";
-  }else if(beer.pints <= 50 && beer.pints > 10) {
+  } else if(beer.pints <= 50 && beer.pints > 10) {
     return "text-warning";
-  }else if(beer.pints <= 10){
+  } else if(beer.pints <= 10){
     return "text-danger";
   }
 }
